@@ -1,0 +1,12 @@
+package com.api.book.dao;
+
+
+import org.springframework.boot.CommandLineRunner;
+
+import com.api.book.entity.Book;
+
+public interface BookRepository extends CommandLineRunner{
+	
+	public Book findById(int id);
+
+}

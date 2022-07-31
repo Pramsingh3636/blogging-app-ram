@@ -1,0 +1,5 @@
+package com.ram.blog.payloads;
+
+public class ApiResponse {
+
+}

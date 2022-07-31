@@ -1,0 +1,55 @@
+package com.ram.olx.service;
+
+import static org.assertj.core.api.Assertions.fail;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ram.olx.token.JwtUtilService;
+
+@SpringBootTest
+class JwtUtilServiceTest
+{
+	@Autowired
+	JwtUtilService jwtUtilService;
+
+	@Test
+	void testGenerateToken() 
+	{
+		Map<String,Object> map = new HashMap<>();
+		map.put("user", "minati");
+		map.put("admin", "bhima");
+		map.put("category", "bike");
+		String token = jwtUtilService.generateToken(map, "minati");
+		System.out.println(token);
+	}
+
+	@Test
+	void testGetClaims() 
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testValidateToken() 
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetUserName() 
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetExpiration() 
+	{
+		fail("Not yet implemented");
+	}
+
+}

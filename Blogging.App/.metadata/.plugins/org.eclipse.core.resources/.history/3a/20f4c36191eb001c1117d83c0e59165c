@@ -1,0 +1,5 @@
+package com.ram.blog.service;
+
+public interface UserService {
+
+}

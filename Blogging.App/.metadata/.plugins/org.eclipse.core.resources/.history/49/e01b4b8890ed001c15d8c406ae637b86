@@ -1,0 +1,5 @@
+package com.ram.olx.repository;
+
+public interface UserRepository {
+
+}

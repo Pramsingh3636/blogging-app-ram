@@ -1,0 +1,48 @@
+package com.api.book.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.api.book.entity.Book;
+import com.api.book.service.BookServices;
+
+@RestController
+public class BookController {
+
+	@Autowired
+	private BookServices bookServices;
+
+//	read the book handler
+	@GetMapping("/books")
+	public List<Book> getBooks(){
+		return this.bookServices.getAllBooks();
+	}
+	
+//  read one book handler
+	@GetMapping("/books/{id}")
+	public Book getBook(@PathVariable("id") int id) {
+		return bookServices.getBookById(id);	
+	}
+
+//	add the book handler
+	@PostMapping("/books")
+	public Book addBook(@RequestBody Book book) {
+		Book b = this.bookServices.addBook(book);
+
+		System.out.println(book);
+		return b;
+	}
+
+//	delete one book handler
+	@DeleteMapping("/books/{id}")
+	public void deleteBook(@PathVariable("id") int id) {
+		bookServices.deleteBook(id);
+	}
+}

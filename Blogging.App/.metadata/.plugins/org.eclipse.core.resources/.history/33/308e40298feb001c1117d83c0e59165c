@@ -1,0 +1,5 @@
+package com.ram.blog.repositories;
+
+public interface UserRepo {
+
+}

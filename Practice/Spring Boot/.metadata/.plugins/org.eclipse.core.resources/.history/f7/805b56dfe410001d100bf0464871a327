@@ -1,0 +1,8 @@
+package com.api.book.helper;
+
+public class FileUploadHelper {
+	
+	public final String UPLOAD_DIR = "R:\\java sts\\Practice\\Spring Boot\\bootapibook\\"
+			+ "src\\main\\resources\\static\\image";
+
+}

@@ -1,0 +1,23 @@
+package com.ram.blog.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.ram.blog.payloads.ApiResponse;
+
+@RestControllerAdvice
+public class GlobalNotFoundException 
+{
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<ApiResponse> resourceNotFoundExceptionHandler(ResourceNotFoundException)
+	{
+		String message = ex.getMessage();
+		ApiResource apiResource = new ApiResource(message, false);
+		return new ResponseEntity<ApiResource>(apiResource, HttpStatus.NOT_FOUND);
+		
+		
+	}
+
+}

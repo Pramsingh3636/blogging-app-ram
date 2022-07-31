@@ -1,0 +1,10 @@
+package com.ram.olx.token;
+
+import com.ram.olx.service.OlxUserDetail;
+
+public interface AuthTokenService 
+{
+	public String generateToken(OlxUserDetail userDetail);
+	String getUserName(String authToken);
+
+}

@@ -1,0 +1,5 @@
+package com.ram.blog.controller;
+
+public class UserController {
+
+}

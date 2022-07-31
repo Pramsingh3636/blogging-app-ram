@@ -1,0 +1,89 @@
+package com.ram.olx.controller;
+
+public class UserController
+{
+	// private static logger log = LoggerFactory.getLogger("com.zensar");
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+	@Autowired
+	OlxUserService userService;
+
+	@Autowired
+	AuthTokenService authService;
+
+	@CrossOrigin(origins = { "http:localhost:5500/*", "**"})
+	@PostMapping(path="/user/add", consumes="multipart/form-data")
+	public String getUser(@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			@RequestParam("pic") MultipartFile file )
+	{
+		//convert file to Blob using java.sql.SimpleBlob
+		//save it in user object
+		//use user repo to save in db.
+
+		System.out.println("received " + username + "," + password + ", " + file.getOriginalFilename());
+		return "data received ";
+	}
+
+	//1
+	@CrossOrigin
+	@PostMapping(path = "/user/authenticate", consumes = "application/json")
+	public String loginUser(@RequestBody OlxUserDetail userDetail)
+	{
+		//System.out.println("Controller loginUser  for {}", userDetail);
+		log.info("Controller loginUser  for {}", userDetail);
+		return userService.loginUser(userDetail);
+	}
+
+	//2. 
+	@DeleteMapping("/user/logout")
+	public Boolean logoutUser(@RequestHeader("Authorization") String authToken)
+	{
+		log.info("Logout request for {}", authToken);
+		return userService.logout(authToken);
+	}
+
+	//3.
+	@PostMapping(path = "/user", consumes = "application/json")
+	public String registerUser(@RequestBody Users user)
+	{
+		log.info("Controller registerUser  for {}", user);
+		Users authToken = userService.registerUser(user);
+		return null;
+	}
+
+	//4
+	@GetMapping("/user")
+	public Users getUser(@RequestHeader("Authorization") String authToken) throws Exception
+	{
+		String username = authService.getUserName(authToken);
+		log.info("token received {}", authToken);
+		Users user = userService.findByUserName(username);
+
+		if(user == null)
+			throw new Exception("User does not Exist");
+
+		log.info("user in controller {}",user);
+		return user;
+	}
+	@ExceptionHandler(Exception.class)
+	public String handleException(Exception ex)
+	{
+		return ex.getMessage();
+	}
+
+	//5
+	@GetMapping("/token/validate")
+	public boolean validateToken(@RequestHeader("Authorization") String authToken)
+	{
+		log.info("Validating request for {}", authToken);
+		return userService. validateToken(authToken);
+	}
+	@GetMapping("/info")
+	public String getInfo()
+	{
+		return "login app is running";
+	}
+}
+
+
+}

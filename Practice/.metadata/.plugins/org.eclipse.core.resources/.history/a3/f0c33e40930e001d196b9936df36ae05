@@ -1,0 +1,6 @@
+package com.ram.jpa.entity;
+
+public class Users {
+	
+
+}

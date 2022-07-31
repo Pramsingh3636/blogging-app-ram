@@ -1,0 +1,24 @@
+package com.ram.olx.exceptions;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+@ControllerAdvice
+public class AllExceptionHandler extends ResponseEntityExceptionHandler
+{
+	private static final Logger Log = LoggerFactory.getLogger(AllExceptionHandler.class); 
+	
+	@ExceptionHandler(UserNotFoundException.class)
+	public String handleUserNotFound()
+	{
+		Log.error("User not found");
+		return "This user does not exist";
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String handleSomeException(Exception ex)
+	{
+		Log.error("{}", ex);
+		return "some error occured";
+	}
+
+}

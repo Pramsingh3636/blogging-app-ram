@@ -1,0 +1,11 @@
+package com.ram.composition;
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		Labtop lappy = new Laptop();
+		
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.ram.blog.service.impl;
+
+import com.ram.blog.service.UserService;
+
+public class UserServiceImpl implements UserService
+{
+
+}

@@ -1,0 +1,30 @@
+package com.ram.jpa;
+
+import com.ram.jpa.dao.UserRepository;
+import com.ram.jpa.entity.Users;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class BootJpaApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context = SpringApplication.run(BootJpaApplication.class, args);
+		
+		
+		UserRepository userRepository = context.getBean(UserRepository.class);
+		
+		Users user = new Users();
+		user.setName("Ramsingh Patel");
+		user.setCity("Katni");
+		user.setStatus("I am a java Developer");
+		
+		Users user1 = userRepository.save(user);
+		
+		System.out.println(user1);
+		
+		}
+
+}

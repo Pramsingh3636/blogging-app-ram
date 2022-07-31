@@ -1,0 +1,7 @@
+package com.api.book.dao;
+
+import org.springframework.boot.CommandLineRunner;
+
+public interface BookRepository extends CommandLineRunner{
+
+}

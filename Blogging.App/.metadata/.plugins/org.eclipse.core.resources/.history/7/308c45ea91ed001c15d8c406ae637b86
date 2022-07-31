@@ -1,0 +1,21 @@
+package com.ram.olx.service;
+
+public class UserServiceImpl {
+
+	private static final Logger log = LoggerFactory.getLogger(OlxUserServiceImpl.class);
+
+	@Autowired
+	UsersRepository usersRepository;
+
+	@Autowired
+	AuthTokenService authService;
+
+	@Override
+	public String loginUser(OlxUserDetail userDetail) 
+	{
+		log.info("returing auth token for " + userDetail);
+		String token=authService.generateToken(userDetail);
+		return token;
+	}
+
+}

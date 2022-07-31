@@ -1,0 +1,10 @@
+package com.ram.jpa.dao;
+
+import com.ram.jpa.entity.Users;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<Users, Integer>
+{
+
+}

@@ -1,0 +1,7 @@
+package java.io;
+
+public class File {
+
+	public static String seprator;
+
+}

@@ -1,0 +1,15 @@
+package com.api.book.helper;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class FileUploadHelper {
+	
+	public final String UPLOAD_DIR = "R:\\java sts\\Practice\\Spring Boot\\bootapibook\\"
+			+ "src\\main\\resources\\static\\image";
+	
+	public boolean uploadFile(MultipartFile multipartFile) {
+		boolean f = false;
+		return f;
+	}
+
+}

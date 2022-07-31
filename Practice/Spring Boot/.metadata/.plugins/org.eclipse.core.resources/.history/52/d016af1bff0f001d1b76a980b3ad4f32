@@ -1,0 +1,38 @@
+package com.api.book.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.api.book.entity.Book;
+
+@Service
+public class BookServices {
+	
+	private static List<Book> list = new ArrayList<>();
+	
+	static {
+		list.add(new Book(11, "Core Java", "abc", 499.0));
+		list.add(new Book(22, "C++", "pqr", 549.0));
+		list.add(new Book(33, "Spring Boot", "xyz", 999.0));
+	}
+//	get all Books
+	public List<Book> getAllBooks(){
+		return list;	
+	}
+	
+//	get a book by using Id
+	public Book getBookById(int id) {
+		Book book = null;
+		book = list.stream().filter(e -> e.getId() == id).findFirst().get();
+		return book;
+	}
+	
+//	Add/create book details
+	
+	public Book addBook(Book b) {
+		return b;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.ram.blog.entities;
+
+public class User {
+
+}

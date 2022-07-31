@@ -1,0 +1,61 @@
+package com.ram.blog.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.ram.blog.entities.User;
+import com.ram.blog.payloads.UserDto;
+import com.ram.blog.repositories.UserRepo;
+import com.ram.blog.service.UserService;
+
+public class UserServiceImpl implements UserService
+{
+	@Autowired
+	private UserRepo userRepo;
+
+	@Override
+	public UserDto creteUser(UserDto user) {
+		User user = this.dtoToUser(userDto);
+		User savedUser = this.userRepo.save(user);
+		return this.userToDto(savedUser);
+	}
+
+	@Override
+	public UserDto updateUser(UserDto user, Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserDto getUserById(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserDto> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deteteUser(Integer userId) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private User dtoToUser(UserDto userDto) {
+		User user = new User();
+		User.setId(userDto.getId());
+		User.setName(userDto.getName());
+		User.setEmail(userDto.getEmail());
+		User.setPassword(userDto.getPassword());
+		User.setAbout(userDto.getAbout());
+		return user;
+	}
+	public UserDto userToDto(User user) {
+		
+	}
+
+}

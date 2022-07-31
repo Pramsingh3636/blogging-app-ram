@@ -1,0 +1,23 @@
+package com.api.book.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.api.book.entity.Book;
+
+public class BookServices {
+	
+	private static List<Book> list = new ArrayList<>();
+	
+	static {
+		list.add(new Book(11, "Core Java", "abc", 499.0));
+		list.add(new Book(22, "C++", "pqr", 549.0));
+		list.add(new Book(33, "Spring Boot", "xyz", 999.0));
+	}
+	
+	public List<Book> getAllBooks(){
+		return list;
+		
+	}
+
+}

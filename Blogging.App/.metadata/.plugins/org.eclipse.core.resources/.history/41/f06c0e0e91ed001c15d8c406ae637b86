@@ -1,0 +1,5 @@
+package com.ram.olx.service;
+
+public class OlxUserDetail {
+
+}
